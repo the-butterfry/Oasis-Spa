@@ -2,10 +2,10 @@
 -- version 4.2.12deb2+deb8u2
 -- http://www.phpmyadmin.net
 --
--- Machine: localhost
--- Gegenereerd op: 02 okt 2016 om 11:24
--- Serverversie: 5.5.52-0+deb8u1
--- PHP-versie: 5.6.24-0+deb8u1
+-- Host: localhost
+-- Generation Time: Mar 23, 2018 at 05:32 PM
+-- Server version: 5.5.59-0+deb8u1
+-- PHP Version: 5.6.33-0+deb8u1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Databank: `controller`
+-- Database: `controller`
 --
 
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `config`
+-- Table structure for table `config`
 --
 
 CREATE TABLE IF NOT EXISTS `config` (
@@ -59,221 +59,388 @@ CREATE TABLE IF NOT EXISTS `config` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Gegevens worden geëxporteerd voor tabel `config`
+-- Dumping data for table `config`
 --
 
 INSERT INTO `config` (`id`, `version`, `raspberry_type`, `token`, `api`, `set_temp`, `set_temp_dev`, `save_temp`, `heater_control`, `heater_relay`, `heater_sensor`, `overheat_control`, `overheat_sensor`, `overheat_temp`, `pump_control`, `pump_relay`, `frost_protection`, `frost_temp`, `frost_sensor`, `cleaning_mode`, `left_column`, `mid_column`, `right_column`, `used_power_date`, `tablet_view`, `ip_check`, `ip_range`, `push_token`, `push_key`) VALUES
-(1, '1.00', 'B+', 'Gdw34^%FHYDe', 1, '36.1', '0.3', 0, 0, 2, 2, 0, 2, '40', 0, 9, 0, '2', 2, 0, 3, '28-0000040d5895', 9, '0000-00-00', 1, 1, '192.168.x.x', '', '');
+(1, '1.20', 'Model 3b', 'Gdw34^%FHYDe', 1, '89', '2', 1, 1, 22, 2, 1, 2, '105', 1, 21, 0, '37', 4, 0, 8, '28FFB1A88317041A', 22, '2018-03-06', 1, 1, '192.168.x.x', '', '');
 
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `device_control`
+-- Table structure for table `device_control`
 --
 
 CREATE TABLE IF NOT EXISTS `device_control` (
-  `id` int(6) NOT NULL,
+`id` int(6) NOT NULL,
   `relay_pin` int(6) NOT NULL,
   `relay_state` int(1) NOT NULL,
   `other_relay_pin` int(6) NOT NULL,
   `other_relay_state` int(1) NOT NULL,
   `remarks` mediumtext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
--- Gegevens worden geëxporteerd voor tabel `device_control`
+-- Dumping data for table `device_control`
 --
 
 INSERT INTO `device_control` (`id`, `relay_pin`, `relay_state`, `other_relay_pin`, `other_relay_state`, `remarks`) VALUES
-(1, 2, 0, 9, 0, 'When heater goes on , pump must go on');
+(3, 22, 1, 21, 1, 'turn off pump with heater');
 
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `login`
+-- Table structure for table `iplist`
+--
+
+CREATE TABLE IF NOT EXISTS `iplist` (
+`id` int(6) NOT NULL,
+  `ip` varchar(15) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `iplist`
+--
+
+INSERT INTO `iplist` (`id`, `ip`) VALUES
+(5, '10.10.11.*'),
+(6, '192.168.44.*');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `login`
 --
 
 CREATE TABLE IF NOT EXISTS `login` (
-  `id` int(20) NOT NULL,
+`id` int(8) NOT NULL,
   `userid` int(10) NOT NULL,
   `ip` varchar(32) NOT NULL,
   `time` bigint(15) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `login`
+--
+
+INSERT INTO `login` (`id`, `userid`, `ip`, `time`) VALUES
+(1, 9, '192.168.11.20', 1521816113);
 
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `logs`
+-- Table structure for table `logs`
 --
 
 CREATE TABLE IF NOT EXISTS `logs` (
-  `id` int(12) NOT NULL,
+`id` int(6) NOT NULL,
   `log` mediumtext NOT NULL,
   `time` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `logs`
+--
+
+INSERT INTO `logs` (`id`, `log`, `time`) VALUES
+(1, 'root tried to login, but failed. From Ip: 192.168.11.20', '2018-03-10 07:39:03'),
+(2, 'root tried to login, but failed. From Ip: 192.168.11.20', '2018-03-10 07:57:59'),
+(3, 'admin tried to login, but failed. From Ip: 192.168.11.20', '2018-03-10 07:58:04'),
+(4, 'rick tried to login, but failed. From Ip: 10.35.0.90', '2018-03-10 12:08:25'),
+(5, 'rick tried to login, but failed. From Ip: 10.35.0.90', '2018-03-10 12:08:51'),
+(6, 'Admin tried to login, but failed. From Ip: 192.168.11.19', '2018-03-19 02:00:26'),
+(7, 'admin tried to login, but failed. From Ip: 192.168.11.20', '2018-03-19 07:55:58'),
+(8, 'admin tried to login, but failed. From Ip: 192.168.11.20', '2018-03-19 07:56:05'),
+(9, 'admin tried to login, but failed. From Ip: 192.168.11.20', '2018-03-19 16:33:29'),
+(10, 'admin tried to login, but failed. From Ip: 192.168.11.20', '2018-03-21 00:25:20'),
+(11, 'admin tried to login, but failed. From Ip: 192.168.11.20', '2018-03-22 16:33:05'),
+(12, 'admin tried to login, but failed. From Ip: 192.168.11.20', '2018-03-23 02:49:37');
 
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `relays`
+-- Table structure for table `relays`
 --
 
 CREATE TABLE IF NOT EXISTS `relays` (
-  `id` int(3) NOT NULL,
+`id` int(4) NOT NULL,
   `pin` int(3) NOT NULL,
-  `name` varchar(52) NOT NULL,
+  `name` varchar(52) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `ip` varchar(15) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `mqtt_address` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `apikey` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `tank` varchar(3) NOT NULL,
+  `time_on` int(2) NOT NULL,
   `power` int(4) NOT NULL,
   `minutes_power` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
--- Gegevens worden geëxporteerd voor tabel `relays`
+-- Dumping data for table `relays`
 --
 
-INSERT INTO `relays` (`id`, `pin`, `name`, `power`, `minutes_power`) VALUES
-(2, 3, 'Uv Light', 9, 0),
-(3, 2, 'Heater', 3000, 0),
-(4, 9, 'Pump', 150, 0),
-(5, 8, 'Pool Lights', 0, 0);
+INSERT INTO `relays` (`id`, `pin`, `name`, `ip`, `mqtt_address`, `apikey`, `tank`, `time_on`, `power`, `minutes_power`) VALUES
+(1, 3, 'Party Button', '', '', '', 'no', 280, 9, 4547),
+(2, 22, 'Heater', '', 'tub/heater/0', '', 'yes', 111, 1, 1824),
+(3, 21, 'Pump', '192.168.11.61', 'tub/pump/0', '95177C81872635CB', 'no', 240, 100, 2799),
+(4, 8, 'Lights', '', '', '', 'no', 436, 0, 3262);
 
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `schedule`
+-- Table structure for table `schedule`
 --
 
 CREATE TABLE IF NOT EXISTS `schedule` (
-  `id` int(11) NOT NULL,
+`id` int(6) NOT NULL,
   `pin` int(2) NOT NULL,
   `state` int(1) NOT NULL,
   `time` time NOT NULL,
-  `overrule` int(1) NOT NULL,
   `active` int(1) NOT NULL,
   `remarks` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
--- Gegevens worden geëxporteerd voor tabel `schedule`
+-- Dumping data for table `schedule`
 --
 
-INSERT INTO `schedule` (`id`, `pin`, `state`, `time`, `overrule`, `active`, `remarks`) VALUES
-(11, 9, 0, '10:42:00', 0, 1, ''),
-(12, 9, 1, '20:00:00', 0, 1, ''),
-(13, 3, 0, '10:00:00', 0, 1, ''),
-(14, 3, 1, '16:00:00', 0, 1, '');
+INSERT INTO `schedule` (`id`, `pin`, `state`, `time`, `active`, `remarks`) VALUES
+(7, 22, 0, '06:00:00', 0, 'Warm tub in the morning'),
+(8, 22, 1, '06:15:00', 0, 'Warm tub in the morning off');
 
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `sensors`
+-- Table structure for table `sensors`
 --
 
 CREATE TABLE IF NOT EXISTS `sensors` (
-  `id` int(4) NOT NULL,
+`id` int(6) NOT NULL,
   `address` varchar(125) NOT NULL,
+  `ip` varchar(15) NOT NULL,
   `name` varchar(52) NOT NULL,
-  `type` varchar(25) NOT NULL,
+  `type` varchar(4) NOT NULL,
   `pin` int(2) NOT NULL,
   `calibration_value` varchar(5) NOT NULL,
-  `temperature` varchar(6) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `visible` varchar(3) NOT NULL,
+  `temperature` varchar(6) NOT NULL,
+  `date_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
--- Gegevens worden geëxporteerd voor tabel `sensors`
+-- Dumping data for table `sensors`
 --
 
-INSERT INTO `sensors` (`id`, `address`, `name`, `type`, `pin`, `calibration_value`, `temperature`) VALUES
-(2, '28-0000040d5895', 'Incomming Temperature ', '', 0, '', '25.1'),
-(3, '28-0000043e2387', 'Outgoing Temperature ', '', 0, '-0.1', '18.1'),
-(4, '28-0000045d809f', 'Hottub Temperature', '', 0, '', '14.1');
+INSERT INTO `sensors` (`id`, `address`, `ip`, `name`, `type`, `pin`, `calibration_value`, `visible`, `temperature`, `date_time`) VALUES
+(2, '28FFB1A88317041A', '192.168.11.63', 'Tub Temp', 'IoT', 0, '', 'no', '92.2', '2018-03-23 16:30:09'),
+(4, '28FF55FA83170400', '192.168.11.62', 'Incoming Temp', 'IoT', 0, '', 'yes', '95', '2018-03-23 16:29:02'),
+(5, '28FF36EBA21704D7', '192.168.11.65', 'Outdoor Air Temp', 'IoT', 0, '', 'yes', '68.9', '2018-03-23 16:26:03');
 
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `temp_control`
+-- Table structure for table `temp_control`
 --
 
 CREATE TABLE IF NOT EXISTS `temp_control` (
-  `id` int(8) NOT NULL,
+`id` int(8) NOT NULL,
   `sensor_id` int(8) NOT NULL,
   `mark` varchar(1) NOT NULL,
   `value` varchar(5) NOT NULL,
   `switch` int(2) NOT NULL,
   `state` int(1) NOT NULL,
   `remarks` mediumtext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
--- Gegevens worden geëxporteerd voor tabel `temp_control`
+-- Dumping data for table `temp_control`
 --
 
 INSERT INTO `temp_control` (`id`, `sensor_id`, `mark`, `value`, `switch`, `state`, `remarks`) VALUES
-(1, 2, '>', '55', 3, 1, '');
+(1, 4, '>', '122', 3, 0, ''),
+(2, 2, '>', '102', 8, 0, 'Lights on when tub is hot'),
+(3, 2, '<', '100', 8, 1, 'Lights off when tub is cool');
 
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `temp_logger`
+-- Table structure for table `temp_logger`
 --
 
 CREATE TABLE IF NOT EXISTS `temp_logger` (
-  `id` int(12) NOT NULL,
+`id` int(10) NOT NULL,
   `address` varchar(52) NOT NULL,
   `date_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `value` varchar(6) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4080 DEFAULT CHARSET=latin1;
 
 --
--- Gegevens worden geëxporteerd voor tabel `temp_logger`
+-- Dumping data for table `temp_logger`
 --
 
 INSERT INTO `temp_logger` (`id`, `address`, `date_time`, `value`) VALUES
-(1, '28-0000040d5895', '2016-10-01 17:21:02', '36.4'),
-(2, '28-0000043e2387', '2016-10-01 17:21:04', '37.8'),
-(3, '28-0000045d809f', '2016-10-01 17:21:05', '32.5');
+(605, '28FFB1A88317041A', '2018-03-10 16:21:01', '32.8'),
+(606, '28FF55FA83170400', '2018-03-10 16:21:01', '18.3'),
+(608, '28FF55FA83170400', '2018-03-10 16:31:01', '18.4'),
+(610, '28FF55FA83170400', '2018-03-10 16:41:01', '18.4'),
+(611, '28FFB1A88317041A', '2018-03-10 16:51:01', '32.5'),
+(612, '28FF55FA83170400', '2018-03-10 16:51:01', '18.4');
 
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `test`
---
-
-CREATE TABLE IF NOT EXISTS `test` (
-  `id` int(2) NOT NULL,
-  `test` int(3) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Tabelstructuur voor tabel `users`
+-- Table structure for table `users`
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(10) NOT NULL,
+`id` int(6) NOT NULL,
   `username` varchar(52) NOT NULL,
   `password` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `ip` varchar(32) NOT NULL,
   `rank` smallint(1) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
 --
--- Gegevens worden geëxporteerd voor tabel `users`
+-- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `email`, `ip`, `rank`) VALUES
-(1, 'admin', 'e10adc3949ba59abbe56e057f20f883e', '', '192.168.2.18', 2);
+(9, 'admin', 'e10adc3949ba59abbe56e057f20f883e', '', '192.168.11.20', 2);
 
 --
--- Indexen voor geëxporteerde tabellen
+-- Indexes for dumped tables
 --
 
 --
--- Indexen voor tabel `config`
+-- Indexes for table `config`
 --
 ALTER TABLE `config`
  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `device_control`
+--
+ALTER TABLE `device_control`
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `id` (`id`);
+
+--
+-- Indexes for table `iplist`
+--
+ALTER TABLE `iplist`
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `id` (`id`);
+
+--
+-- Indexes for table `login`
+--
+ALTER TABLE `login`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `logs`
+--
+ALTER TABLE `logs`
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `id` (`id`);
+
+--
+-- Indexes for table `relays`
+--
+ALTER TABLE `relays`
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `id` (`id`);
+
+--
+-- Indexes for table `schedule`
+--
+ALTER TABLE `schedule`
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `id` (`id`);
+
+--
+-- Indexes for table `sensors`
+--
+ALTER TABLE `sensors`
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `id` (`id`);
+
+--
+-- Indexes for table `temp_control`
+--
+ALTER TABLE `temp_control`
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `id` (`id`);
+
+--
+-- Indexes for table `temp_logger`
+--
+ALTER TABLE `temp_logger`
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `id` (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+ ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `id` (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `device_control`
+--
+ALTER TABLE `device_control`
+MODIFY `id` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `iplist`
+--
+ALTER TABLE `iplist`
+MODIFY `id` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `login`
+--
+ALTER TABLE `login`
+MODIFY `id` int(8) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `logs`
+--
+ALTER TABLE `logs`
+MODIFY `id` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+--
+-- AUTO_INCREMENT for table `relays`
+--
+ALTER TABLE `relays`
+MODIFY `id` int(4) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `schedule`
+--
+ALTER TABLE `schedule`
+MODIFY `id` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `sensors`
+--
+ALTER TABLE `sensors`
+MODIFY `id` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `temp_control`
+--
+ALTER TABLE `temp_control`
+MODIFY `id` int(8) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `temp_logger`
+--
+ALTER TABLE `temp_logger`
+MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4080;
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+MODIFY `id` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
+DELIMITER $$
+--
+-- Events
+--
+CREATE DEFINER=`root`@`localhost` EVENT `DeleteExpiredLog` ON SCHEDULE EVERY 1 DAY STARTS '2018-03-08 07:26:06' ON COMPLETION NOT PRESERVE ENABLE DO DELETE FROM temp_logger WHERE date < DATE_SUB(NOW(), INTERVAL 200 DAY)$$
+
+CREATE DEFINER=`root`@`localhost` EVENT `Remove bad logs` ON SCHEDULE EVERY 2 HOUR STARTS '2018-03-08 07:25:00' ON COMPLETION NOT PRESERVE ENABLE DO DELETE FROM `temp_logger` WHERE `value` < 1$$
+
+DELIMITER ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
