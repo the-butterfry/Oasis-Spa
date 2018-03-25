@@ -6,7 +6,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Luxury Inflatable SPA</title>
+  <title>Welcome To Luxury</title>
   <link rel="stylesheet" href="css/logged.css">
 <link href="https://fonts.googleapis.com/css?family=Arima+Madurai|Bungee+Inline|Bungee+Outline|Bungee+Shade|Rakkas|Rasa|Shrikhand|Yatra+One|Space+Mono" rel="stylesheet">
 </head>
