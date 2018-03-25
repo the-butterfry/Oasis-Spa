@@ -1,6 +1,6 @@
 A few API examples:
 In this case my ipadres is: "192.168.11.60" and my API key / token is "Gdw34^%FHYDe".
-In you're case this would be different.
+In your case this would be different. (if you change the token, there are several undocumented places that it needs to be update.) best leave it alone for now.
 
 In case you want to the web content implemented in another system you can set you're own style with the following commands:
 &size=XXXX$text=XXX&background=XXX
