@@ -1,6 +1,10 @@
 # Oasis-Spa
 An MQTT Enabled Hot Tub controller for the Raspberry Pi
+
+
 3/23/18 PM: Getting better. Release v1.5 published. Rick will be publishing his Pre-Oasis bugfix release as v1.2. WIKI filled out and at leas to a point where someone can get somewhere.
+
+
 3/23/18: This is a mess right now, and not even sure if I will keep it public. It works great, with both MQTT and Traditional GPIO controlled RPi relays. If you're interested let me know and I can explain it to you. Otherwise for now, this is just a test. At this point installing the Oasis Spa requires a full Raspberry Pi image to be flashed to your SD card. You can start with the instructables mentioned below. After that, there are several dependencies that need installing, then finally the Oasis Spa mod web files and DB.
 
 
