@@ -43,7 +43,7 @@ alert("User Added.");
 return;
 }
 
-echo "<table width=\"50%\"> ";
+echo "<table width=\"60%\"> ";
 echo "<form method=\"post\" action=\"\">";
 echo "<tr>";
 echo "  <td width=\"40%\">Username: </td>";
@@ -133,7 +133,7 @@ alert("User Changed.");
 return;
 }
 
-echo "<table width=\"50%\"> ";
+echo "<table width=\"60%\"> ";
 echo "<form method=\"post\" action=\"\">";
 echo "<tr>";
 echo "  <td width=\"40%\">Username: </td>";
@@ -196,7 +196,7 @@ return;
 
 
 
-echo "<table width=\"80%\"> ";
+echo "<table width=\"90%\"> ";
 echo "<tr>";
 echo "  <td width=\"20%\"> Username:  </td>";
 echo "  <td width=\"40%\"> Email:  </td>";

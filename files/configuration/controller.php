@@ -998,7 +998,7 @@ echo "<br/> <a href=\"index.php?p=CONF.controller&a=device_new\"> <img src=\"ima
 
 
 
-echo "<br/><p align=\"right\">  <a href=\"./manual.html#controller_settings\" target=\"_blank\"> <img src=\"./images/questionmark.png\"> </a> </p> ";
+echo "<br/><p align=\"right\">  <a href=\"https://github.com/the-butterfry/Oasis-Spa/wiki\" target=\"_blank\"> <img src=\"./images/questionmark.png\"> </a> </p> ";
 
 
 

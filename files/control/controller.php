@@ -284,6 +284,6 @@ echo "</table>";
 ****/
 
 
-echo "<p align=\"right\">  <a href=\"./manual.html#controller\" target=\"_blank\"> <img src=\"./images/questionmark.png\"> </a> </p> ";
+echo "<p align=\"right\">  <a href=\"https://github.com/the-butterfry/Oasis-Spa/wiki\" target=\"_blank\"> <img src=\"./images/questionmark.png\"> </a> </p> ";
 
 ?>

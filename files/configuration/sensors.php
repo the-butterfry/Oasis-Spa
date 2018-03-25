@@ -349,7 +349,7 @@ echo "<br/><a href=\"index.php?p=CONF.sensors&a=new\"><img src=\"images/add.png\
 echo "<a href=\"index.php?p=CONF.sensors&a=search_iot\"><img src=\"images/iot_box.png\" alt=\"Add ESPurna sensor\" width=\"30\"></a>&nbsp;";
 echo "<a href=\"index.php?p=CONF.sensors&a=search_gpio\"><img src=\"images/search.png\" width=\"30\"></a>&nbsp;";
 
-echo "<br/><p align=\"right\">  <a href=\"./files/manual/adding_sensors.pdf\" target=\"_blank\"> <img src=\"./images/questionmark.png\"> </a> </p> ";
+echo "<br/><p align=\"right\">  <a href=\"https://github.com/the-butterfry/Oasis-Spa/wiki\" target=\"_blank\"> <img src=\"./images/questionmark.png\"> </a> </p> ";
 
 
 ?>
