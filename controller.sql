@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 23, 2018 at 05:32 PM
+-- Generation Time: Mar 25, 2018 at 03:42 AM
 -- Server version: 5.5.59-0+deb8u1
 -- PHP Version: 5.6.33-0+deb8u1
 
@@ -63,7 +63,7 @@ CREATE TABLE IF NOT EXISTS `config` (
 --
 
 INSERT INTO `config` (`id`, `version`, `raspberry_type`, `token`, `api`, `set_temp`, `set_temp_dev`, `save_temp`, `heater_control`, `heater_relay`, `heater_sensor`, `overheat_control`, `overheat_sensor`, `overheat_temp`, `pump_control`, `pump_relay`, `frost_protection`, `frost_temp`, `frost_sensor`, `cleaning_mode`, `left_column`, `mid_column`, `right_column`, `used_power_date`, `tablet_view`, `ip_check`, `ip_range`, `push_token`, `push_key`) VALUES
-(1, '1.20', 'Model 3b', 'Gdw34^%FHYDe', 1, '89', '2', 1, 1, 22, 2, 1, 2, '105', 1, 21, 0, '37', 4, 0, 8, '28FFB1A88317041A', 22, '2018-03-06', 1, 1, '192.168.x.x', '', '');
+(1, '1.20', 'Model 3b', 'Gdw34^%FHYDe', 1, '98', '4', 1, 1, 22, 2, 1, 2, '105', 1, 21, 0, '37', 4, 0, 8, '28FFB1A88317041A', 22, '2018-03-06', 1, 1, '192.168.x.x', '', '');
 
 -- --------------------------------------------------------
 
@@ -117,14 +117,14 @@ CREATE TABLE IF NOT EXISTS `login` (
   `userid` int(10) NOT NULL,
   `ip` varchar(32) NOT NULL,
   `time` bigint(15) NOT NULL
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `login`
 --
 
 INSERT INTO `login` (`id`, `userid`, `ip`, `time`) VALUES
-(1, 9, '192.168.11.20', 1521816113);
+(1, 9, '10.35.0.90', 1521941171);
 
 -- --------------------------------------------------------
 
@@ -136,25 +136,7 @@ CREATE TABLE IF NOT EXISTS `logs` (
 `id` int(6) NOT NULL,
   `log` mediumtext NOT NULL,
   `time` datetime NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `logs`
---
-
-INSERT INTO `logs` (`id`, `log`, `time`) VALUES
-(1, 'root tried to login, but failed. From Ip: 192.168.11.20', '2018-03-10 07:39:03'),
-(2, 'root tried to login, but failed. From Ip: 192.168.11.20', '2018-03-10 07:57:59'),
-(3, 'admin tried to login, but failed. From Ip: 192.168.11.20', '2018-03-10 07:58:04'),
-(4, 'rick tried to login, but failed. From Ip: 10.35.0.90', '2018-03-10 12:08:25'),
-(5, 'rick tried to login, but failed. From Ip: 10.35.0.90', '2018-03-10 12:08:51'),
-(6, 'Admin tried to login, but failed. From Ip: 192.168.11.19', '2018-03-19 02:00:26'),
-(7, 'admin tried to login, but failed. From Ip: 192.168.11.20', '2018-03-19 07:55:58'),
-(8, 'admin tried to login, but failed. From Ip: 192.168.11.20', '2018-03-19 07:56:05'),
-(9, 'admin tried to login, but failed. From Ip: 192.168.11.20', '2018-03-19 16:33:29'),
-(10, 'admin tried to login, but failed. From Ip: 192.168.11.20', '2018-03-21 00:25:20'),
-(11, 'admin tried to login, but failed. From Ip: 192.168.11.20', '2018-03-22 16:33:05'),
-(12, 'admin tried to login, but failed. From Ip: 192.168.11.20', '2018-03-23 02:49:37');
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -180,10 +162,10 @@ CREATE TABLE IF NOT EXISTS `relays` (
 --
 
 INSERT INTO `relays` (`id`, `pin`, `name`, `ip`, `mqtt_address`, `apikey`, `tank`, `time_on`, `power`, `minutes_power`) VALUES
-(1, 3, 'Party Button', '', '', '', 'no', 280, 9, 4547),
-(2, 22, 'Heater', '', 'tub/heater/0', '', 'yes', 111, 1, 1824),
-(3, 21, 'Pump', '192.168.11.61', 'tub/pump/0', '95177C81872635CB', 'no', 240, 100, 2799),
-(4, 8, 'Lights', '', '', '', 'no', 436, 0, 3262);
+(1, 3, 'Party Button', '', '', '', 'no', 1000, 9, 5267),
+(2, 22, 'Heater', '', 'tub/heater/0', '', 'yes', 935, 1, 2648),
+(3, 21, 'Pump', '', 'tub/pump/0', '95177C81872635CB', 'no', 1071, 100, 3629),
+(4, 8, 'Lights', '', '', '', 'no', 585, 0, 3410);
 
 -- --------------------------------------------------------
 
@@ -205,7 +187,7 @@ CREATE TABLE IF NOT EXISTS `schedule` (
 --
 
 INSERT INTO `schedule` (`id`, `pin`, `state`, `time`, `active`, `remarks`) VALUES
-(7, 22, 0, '06:00:00', 0, 'Warm tub in the morning'),
+(7, 22, 1, '00:00:00', 1, 'Shutoff at night'),
 (8, 22, 1, '06:15:00', 0, 'Warm tub in the morning off');
 
 -- --------------------------------------------------------
@@ -232,9 +214,9 @@ CREATE TABLE IF NOT EXISTS `sensors` (
 --
 
 INSERT INTO `sensors` (`id`, `address`, `ip`, `name`, `type`, `pin`, `calibration_value`, `visible`, `temperature`, `date_time`) VALUES
-(2, '28FFB1A88317041A', '192.168.11.63', 'Tub Temp', 'IoT', 0, '', 'no', '92.2', '2018-03-23 16:30:09'),
-(4, '28FF55FA83170400', '192.168.11.62', 'Incoming Temp', 'IoT', 0, '', 'yes', '95', '2018-03-23 16:29:02'),
-(5, '28FF36EBA21704D7', '192.168.11.65', 'Outdoor Air Temp', 'IoT', 0, '', 'yes', '68.9', '2018-03-23 16:26:03');
+(2, '28FFB1A88317041A', '192.168.11.63', 'Tub Temp', 'IoT', 0, '', 'no', '97.7', '2018-03-25 01:41:01'),
+(4, '28FF55FA83170400', '192.168.11.62', 'Incoming Temp', 'IoT', 0, '', 'yes', '100.1', '2018-03-25 01:38:01'),
+(5, '28FF36EBA21704D7', '192.168.11.65', 'Outdoor Air Temp', 'IoT', 0, '', 'yes', '69.1', '2018-03-25 01:42:02');
 
 -- --------------------------------------------------------
 
@@ -272,19 +254,16 @@ CREATE TABLE IF NOT EXISTS `temp_logger` (
   `address` varchar(52) NOT NULL,
   `date_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `value` varchar(6) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4080 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4677 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `temp_logger`
 --
 
 INSERT INTO `temp_logger` (`id`, `address`, `date_time`, `value`) VALUES
-(605, '28FFB1A88317041A', '2018-03-10 16:21:01', '32.8'),
-(606, '28FF55FA83170400', '2018-03-10 16:21:01', '18.3'),
-(608, '28FF55FA83170400', '2018-03-10 16:31:01', '18.4'),
-(610, '28FF55FA83170400', '2018-03-10 16:41:01', '18.4'),
-(611, '28FFB1A88317041A', '2018-03-10 16:51:01', '32.5'),
-(612, '28FF55FA83170400', '2018-03-10 16:51:01', '18.4');
+(4674, '28FFB1A88317041A', '2018-03-25 01:41:01', '97.8'),
+(4675, '28FF55FA83170400', '2018-03-25 01:41:01', '100.1'),
+(4676, '28FF36EBA21704D7', '2018-03-25 01:41:01', '68.8');
 
 -- --------------------------------------------------------
 
@@ -396,12 +375,12 @@ MODIFY `id` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
-MODIFY `id` int(8) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `id` int(8) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `logs`
 --
 ALTER TABLE `logs`
-MODIFY `id` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+MODIFY `id` int(6) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `relays`
 --
@@ -426,7 +405,7 @@ MODIFY `id` int(8) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 -- AUTO_INCREMENT for table `temp_logger`
 --
 ALTER TABLE `temp_logger`
-MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4080;
+MODIFY `id` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4677;
 --
 -- AUTO_INCREMENT for table `users`
 --
