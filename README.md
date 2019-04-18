@@ -1,6 +1,9 @@
 # Oasis-Spa
 An MQTT Enabled Hot Tub controller for the Raspberry Pi
 
+4/19/2019: Work starting again! This repository will be updated as work is completed. For now @aaronbronow has forked my latest version (updated to PHP7 and a few other changes). See his fork.
+
+Also, not that anyone has attempted this project that I know of, but in it's currrent form, it's impossible to install from scratch as PHP5 is no longer available to RPi users. Aaron's fork has my current latest code that can be used, albiet quite messy as is this repository. Aaron has come onboard to clean it up and add a bunch of new features and redundancies to the controller. We'll merge it back when it's ready.
 
 3/23/18 PM: Getting better. Release v1.5 published. Rick will be publishing his Pre-Oasis bugfix release as v1.2 in the Master branch. WIKI filled out and at least to a point where someone can get somewhere.
 
